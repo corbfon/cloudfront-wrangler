@@ -1,5 +1,5 @@
 {
-  "name": "cloudfront-wrangler",
+  "name": "cloudwatching",
   "version": "1.0.2",
   "description": "command line utility to (sort of) stream logs from aws cloudwatch",
   "main": "index.js",
@@ -7,13 +7,13 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/corbfon/cloudfront-wrangler.git"
+    "url": "git+https://github.com/corbfon/cloudwatcher.git"
   },
   "engines": {
     "node": ">=8"
   },
   "bin": {
-    "wrangle": "bin/wrangle"
+    "cloudwatching": "bin/cloudwatching"
   },
   "preferGlobal": true,
   "scripts": {
