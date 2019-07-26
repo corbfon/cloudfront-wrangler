@@ -1,6 +1,6 @@
 {
   "name": "cloudwatching",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "command line utility to (sort of) stream logs from aws cloudwatch",
   "main": "index.js",
   "author": "corbfon",
