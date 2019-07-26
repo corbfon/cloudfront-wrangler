@@ -1,6 +1,6 @@
 {
   "name": "cloudfront-wrangler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "command line utility to (sort of) stream logs from aws cloudwatch",
   "main": "index.js",
   "author": "corbfon",
