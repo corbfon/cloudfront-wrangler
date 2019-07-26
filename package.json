@@ -2,7 +2,7 @@
   "name": "cloudwatching",
   "version": "1.0.4",
   "description": "command line utility to (sort of) stream logs from aws cloudwatch",
-  "main": "index.js",
+  "main": "src/index.js",
   "author": "corbfon",
   "license": "ISC",
   "repository": {
@@ -17,7 +17,7 @@
   },
   "preferGlobal": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "log",
@@ -28,5 +28,9 @@
     "aws-sdk": "^2.500.0",
     "minimist": "^1.2.0",
     "ora": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "jest": "^24.8.0"
   }
 }

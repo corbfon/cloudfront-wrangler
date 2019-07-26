@@ -35,7 +35,7 @@ const startLogs = () => {
         })
         .catch(err => {
             spinner.stop()
-            error(err.message, true)
+            error(err, true)
         })
 }
 
@@ -45,12 +45,12 @@ const setStreamName = () => cloudwatch.describeLogStreams({ logGroupName }).prom
 
 const startStreamRefresh = () => {
     setInterval(() => {
-        setStreamName().catch(err => error(err.message, true))
+        setStreamName().catch(err => error(err, true))
     }, 2000)
 }
 
 module.exports = (args) => {
-    if (!args.name) throw new Error('no log name provided - must specify an argument for name')
+    if (!args.name) error(new Error('no log name provided - must specify an argument for name'), true)
     logGroupName = args.name
     console.log('fetching logs...')
     if (args['refresh-stream']) {

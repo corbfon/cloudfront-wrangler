@@ -23,13 +23,13 @@ module.exports = async () => {
 
     switch (cmd) {
         case 'fetch':
-            require('./src/fetch')(args)
+            require('./cmds/fetch')(args)
             break
         case 'version':
-            require('./src/version')(args)
+            require('./cmds/version')(args)
             break
         case 'help':
-            require('./src/help')(args)
+            require('./cmds/help')(args)
             break
         default:
             error(`"${cmd}" is not a valid command!`, true)
