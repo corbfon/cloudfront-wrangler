@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk')
 const ora = require('ora')
+const error = require('./../utils/error')
 
 const cloudwatch = new AWS.CloudWatchLogs({ region: 'us-west-2' })
 
@@ -32,7 +33,10 @@ const startLogs = () => {
                 })
             }, 2000)
         })
-        .catch(err => console.error(err))
+        .catch(err => {
+            spinner.stop()
+            error(err.message, true)
+        })
 }
 
 const setStreamName = () => cloudwatch.describeLogStreams({ logGroupName }).promise()
@@ -41,12 +45,17 @@ const setStreamName = () => cloudwatch.describeLogStreams({ logGroupName }).prom
 
 const startStreamRefresh = () => {
     setInterval(() => {
-        setStreamName()
+        setStreamName().catch(err => error(err.message, true))
     }, 2000)
 }
 
 module.exports = (args) => {
     if (!args.name) throw new Error('no log name provided - must specify an argument for name')
     logGroupName = args.name
+    console.log('fetching logs...')
+    if (args['refresh-stream']) {
+        console.log('fetching logs in refresh-stream mode')
+        startStreamRefresh()
+    }
     startLogs()
 }
