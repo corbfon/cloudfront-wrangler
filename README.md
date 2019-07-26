@@ -1,7 +1,5 @@
 #CloudWatching
 
-![what in titration meme](https://imgur.com/W4mzrtJ)
-
 Ever get tired of using the AWS console to look at CloudFront logs? Now you won't have to, because CloudWatching will get those logs to your terminal. CloudFront doesn't offer streaming, so in order to get the latest logs, you have to long-poll the log queue. CloudWatching does this for you by wrapping the aws-sdk for CloudFront, and automatically fetches the latest logs for a specified log group.
 
 ## Installation
