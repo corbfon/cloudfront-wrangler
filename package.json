@@ -10,7 +10,7 @@
     "url": "git+https://github.com/corbfon/cloudfront-wrangler.git"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=8"
   },
   "bin": {
     "wrangle": "bin/wrangle"
