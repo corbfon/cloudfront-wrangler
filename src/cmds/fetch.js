@@ -35,9 +35,7 @@ const startLogs = () => {
 }
 
 const setStreamName = () => cloudwatch.describeLogStreams({ logGroupName, orderBy: 'LastEventTime', limit: 1, descending: true }).promise()
-    // .then(data => { console.log(data); return data })
-    // .then(({ logStreams }) => logStreams.reduce((prev, current) => (prev.lastEventTimestamp > current.lastEventTimestamp) ? prev : current))
-    .then(({ logStreams }) => logStreams[0])
+    .then(({ logStreams }) => logStreams[0]) // due to limit and sort, only the first logStream is the latest
     .then(({ logStreamName: logName }) => (logStreamName = logName))
 
 const startStreamRefresh = () => {

@@ -1,6 +1,5 @@
 const error = require('./error')
 
-
 describe('error', () => {
     let consoleSpy 
     let exitSpy
