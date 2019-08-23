@@ -18,8 +18,9 @@ Poll the latest logs by group name. Comes with 10 logs and will add new ones eve
 cloudwatching fetch -n <group-name> <options>
 ```
 
-Supported options: `rs`
+Supported options: `refresh-stream`, `region`
 
 ### options
 
 `--refresh-stream`, `--rs` - Useful for developing in serverless. Refreshes the stream name that logs are polled from so that the latest stream is always polled.
+`-region`, `-r` - Set the AWS region. Default: your [default aws cli region](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-region.html) or `us-west-2`

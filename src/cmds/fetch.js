@@ -3,7 +3,7 @@ const ora = require('ora')
 const error = require('./../utils/error')
 const logEvents = require('./../utils/log')
 
-const cloudwatch = new AWS.CloudWatchLogs({ region: 'us-west-2' })
+let cloudwatch = new AWS.CloudWatchLogs()
 
 let logStreamName, logGroupName
 
