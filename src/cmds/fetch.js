@@ -1,16 +1,11 @@
 const AWS = require('aws-sdk')
 const ora = require('ora')
 const error = require('./../utils/error')
+const logEvents = require('./../utils/log')
 
 const cloudwatch = new AWS.CloudWatchLogs({ region: 'us-west-2' })
 
 let logStreamName, logGroupName
-
-const logEvents = events => {
-    events.forEach(({ message }) => {
-        console.log(message)
-    })
-}
 
 const startLogs = () => {
     const spinner = ora().start()
@@ -39,8 +34,10 @@ const startLogs = () => {
         })
 }
 
-const setStreamName = () => cloudwatch.describeLogStreams({ logGroupName }).promise()
-    .then(({ logStreams }) => logStreams.reduce((prev, current) => (prev.lastEventTimestamp > current.lastEventTimestamp) ? prev : current))
+const setStreamName = () => cloudwatch.describeLogStreams({ logGroupName, orderBy: 'LastEventTime', limit: 1, descending: true }).promise()
+    // .then(data => { console.log(data); return data })
+    // .then(({ logStreams }) => logStreams.reduce((prev, current) => (prev.lastEventTimestamp > current.lastEventTimestamp) ? prev : current))
+    .then(({ logStreams }) => logStreams[0])
     .then(({ logStreamName: logName }) => (logStreamName = logName))
 
 const startStreamRefresh = () => {
